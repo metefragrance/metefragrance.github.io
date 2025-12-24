@@ -1,0 +1,557 @@
+This site made by Ata Köse. For @mete.fragrance in Instagram. This website made free for helping purposes. Thanks for reading and looking this.
+Website view:
+<html lang="tr"><head><style class="darkreader darkreader--text" media="screen"></style><style class="darkreader darkreader--invert" media="screen"></style><style class="darkreader darkreader--inline" media="screen">[data-darkreader-inline-bgcolor] {
+  background-color: var(--darkreader-inline-bgcolor) !important;
+}
+[data-darkreader-inline-bgimage] {
+  background-image: var(--darkreader-inline-bgimage) !important;
+}
+[data-darkreader-inline-border] {
+  border-color: var(--darkreader-inline-border) !important;
+}
+[data-darkreader-inline-border-bottom] {
+  border-bottom-color: var(--darkreader-inline-border-bottom) !important;
+}
+[data-darkreader-inline-border-left] {
+  border-left-color: var(--darkreader-inline-border-left) !important;
+}
+[data-darkreader-inline-border-right] {
+  border-right-color: var(--darkreader-inline-border-right) !important;
+}
+[data-darkreader-inline-border-top] {
+  border-top-color: var(--darkreader-inline-border-top) !important;
+}
+[data-darkreader-inline-boxshadow] {
+  box-shadow: var(--darkreader-inline-boxshadow) !important;
+}
+[data-darkreader-inline-color] {
+  color: var(--darkreader-inline-color) !important;
+}
+[data-darkreader-inline-fill] {
+  fill: var(--darkreader-inline-fill) !important;
+}
+[data-darkreader-inline-stroke] {
+  stroke: var(--darkreader-inline-stroke) !important;
+}
+[data-darkreader-inline-outline] {
+  outline-color: var(--darkreader-inline-outline) !important;
+}
+[data-darkreader-inline-stopcolor] {
+  stop-color: var(--darkreader-inline-stopcolor) !important;
+}</style><style class="darkreader darkreader--variables" media="screen">:root {
+   --darkreader-neutral-background: #202223;
+   --darkreader-neutral-text: #e3dfda;
+   --darkreader-selection-background: #0d59b5;
+   --darkreader-selection-text: #f2f0ed;
+}</style><style class="darkreader darkreader--root-vars" media="screen"></style><style data-merge-styles="true"></style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Mete Fragrance | Parfüm &amp; Koku</title>
+  <meta name="description" content="Mete Fragrance parfüm koleksiyonu. Satın alma işlemleri Shopier üzerinden yapılmaktadır.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://metefragrance.github.io/">
+
+  <!-- ✅ Google Search Console Verification -->
+  <meta name="google-site-verification" content="gDc5acUE148RM2jMkyiNisgCAZhxa5xeb8r28hc7u-o">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mete Fragrance | Parfüm &amp; Koku">
+  <meta property="og:description" content="Mete Fragrance parfüm koleksiyonu. Satın alma işlemleri Shopier üzerinden yapılmaktadır.">
+  <meta property="og:url" content="https://www.shopier.com/metefragrance">
+  <meta property="og:image" content="https://cdn.shopier.app/logo_468/metefragrance_d2e84a1be2ba0d1879974e790364aa24.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mete Fragrance | Parfüm &amp; Koku">
+  <meta name="twitter:description" content="Mete Fragrance parfüm koleksiyonu. Satın alma işlemleri Shopier üzerinden yapılmaktadır.">
+  <meta name="twitter:image" content="https://cdn.shopier.app/logo_468/metefragrance_d2e84a1be2ba0d1879974e790364aa24.png">
+
+  <link rel="icon" href="https://cdn.shopier.app/logo_468/metefragrance_d2e84a1be2ba0d1879974e790364aa24.png">
+
+  <style>
+    :root{
+      --bg:#0b0b0f;
+      --card:#12121b;
+      --text:#f2f3f7;
+      --muted:#b6b8c7;
+      --line:rgba(255,255,255,.12);
+      --accent:#c7a35b;
+      --radius:18px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(199,163,91,.18), transparent 60%),
+        radial-gradient(circle at 80% 0%, rgba(255,255,255,.06), transparent 55%),
+        var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a{text-decoration:none;color:inherit}
+
+    .wrap{
+      max-width:1100px;
+      margin:auto;
+      padding:24px 18px 60px;
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width: 220px;
+    }
+    .logo img{height:36px;width:auto;display:block}
+    @media(min-width:640px){ .logo img{height:42px;} }
+    .logo h1{
+      margin:0;
+      font-size:18px;
+      font-weight:750;
+      letter-spacing:.2px;
+    }
+    @media(max-width:480px){ .logo h1{display:none;} }
+
+    .actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 16px;
+      border-radius:999px;
+      border:1px solid rgba(199,163,91,.5);
+      background:rgba(199,163,91,.15);
+      font-weight:650;
+      font-size:14px;
+      min-height:40px;
+      transition: transform .15s ease, background .15s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{background:rgba(199,163,91,.25); transform: translateY(-1px);}
+    .btn:active{transform: translateY(0);}
+
+    .hero{margin-top:36px}
+    h2{
+      margin:0 0 12px;
+      font-size:clamp(32px,5vw,44px);
+      line-height:1.1;
+      letter-spacing:-.3px;
+    }
+    .lead{
+      margin:0;
+      color:var(--muted);
+      max-width:70ch;
+      line-height:1.6;
+      font-size:15px;
+    }
+
+    section{margin-top:42px}
+    h3{margin:0 0 14px;font-size:18px}
+
+    /* Search */
+    .searchbar{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin: 14px 0 18px;
+    }
+    .search{
+      flex: 1 1 260px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(18,18,27,.7);
+    }
+    .search input{
+      width:100%;
+      border:none;
+      outline:none;
+      background:transparent;
+      color: var(--text);
+      font-size:14px;
+    }
+    .search small{
+      color: var(--muted);
+      font-size:12px;
+      white-space:nowrap;
+    }
+    .hint{color:var(--muted);font-size:12px}
+
+    /* Grid */
+    .grid{
+      display:grid;
+      gap:16px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width:520px){
+      .grid{grid-template-columns: repeat(2, minmax(0, 1fr));}
+    }
+    @media (min-width:860px){
+      .grid{grid-template-columns: repeat(3, minmax(0, 1fr));}
+    }
+
+    /* Product Card */
+    .card{
+      position:relative;
+      background:rgba(18,18,27,.9);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .card:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 14px 34px rgba(0,0,0,.35);
+      border-color: rgba(255,255,255,.18);
+    }
+
+    .thumb{
+      width:100%;
+      aspect-ratio: 1 / 1;
+      object-fit:cover;
+      display:block;
+      background: rgba(255,255,255,.03);
+    }
+
+    .info{
+      padding: 14px;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:flex-start;
+    }
+
+    .title{
+      font-weight:750;
+      font-size:14px;
+      line-height:1.35;
+    }
+
+    .price{
+      color: var(--accent);
+      font-weight:850;
+      font-size:13px;
+      white-space:nowrap;
+      background: rgba(199,163,91,.10);
+      border: 1px solid rgba(199,163,91,.28);
+      padding: 7px 10px;
+      border-radius: 999px;
+      line-height:1;
+    }
+
+    .badge{
+      position:absolute;
+      top:12px;
+      left:12px;
+      background: rgba(199,163,91,.95);
+      color:#141218;
+      font-weight:800;
+      font-size:12px;
+      padding:6px 10px;
+      border-radius: 999px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.25);
+    }
+
+    .empty{
+      display:none;
+      margin-top: 12px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px dashed rgba(255,255,255,.18);
+      color: var(--muted);
+      background: rgba(255,255,255,.02);
+      line-height: 1.6;
+    }
+
+    footer{
+      margin-top:56px;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      color:var(--muted);
+      font-size:13px;
+      border-top:1px solid rgba(255,255,255,.08);
+      padding-top:16px;
+    }
+  </style>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"><style class="darkreader darkreader--override" media="screen"></style></head>
+
+<body>
+<div class="wrap">
+
+  <header>
+<div class="logo">
+  <img src="https://cdn.shopier.app/logo_468/metefragrance_d2e84a1be2ba0d1879974e790364aa24.png" style="border-radius: 50%; width: 75px; height: 75px; object-fit: cover;" alt="Mete Fragrance Logo" loading="lazy">
+  <h1>Mete Fragrance</h1>
+</div>
+
+    <div class="actions">
+      <a class="btn" href="https://www.instagram.com/mete.fragrance/" target="_blank" rel="noopener">Instagram</a>
+      <a class="btn" href="https://www.shopier.com/metefragrance" target="_blank" rel="noopener">Shopier’de Satın Al</a>
+      <a class="btn" href="https://metefragrance.github.io/parfumboyutlari" target="_blank" rel="noopener">Parfüm Boyutları</a>
+    </div>
+  </header>
+
+  <div class="hero">
+    <h2>İmza kokunu seç</h2>
+    <p class="lead">
+      Mete Fragrance; popüler ve seçkin parfümleri ulaşılabilir fiyatlarla sunar.
+      Fiyatlar 3 ml içindir. Satın alma işlemleri Shopier üzerinden yapılmaktadır.
+      Ayrıca Shopier üzerinden 5, 10 ve 30 ml seçeneklerini görebilir ve satın alabilirsiniz.
+    </p>
+  </div>
+
+  <section id="koleksiyon">
+    <h3>Koleksiyon</h3>
+
+    <div class="searchbar">
+      <div class="search" role="search">
+        <input id="searchInput" type="search" placeholder="Ürün ara… (örn: YSL, Elixir, Klonu)" autocomplete="off">
+        <small id="countInfo">21 ürün</small>
+      </div>
+      <div class="hint">İpucu: Parfümleri daha rahat bulabilmek için markası(YSL, Elixir vb) olarak aratın.</div>
+    </div>
+
+    <div class="grid" id="productGrid">
+
+            <a class="card" data-name="Fresh Combo 3x3" href="https://www.shopier.com/metefragrance/42442093" target="_blank" rel="noopener">
+        <span class="badge">Yeni</span>
+        <span class="badge">Combo</span>
+        <img class="thumb" src="https://cdn.shopier.app/pictures_large/metefragrance_b503cf7c0f8104da64c654a5ab5137fe.jpeg" alt="Fresh Combo" loading="lazy">
+        <div class="info"><div class="title">Fresh Combo 3x3 (Kargo Dahil)</div><div class="price">600 TL</div></div>
+      </a>
+      
+      <a class="card" data-name="Vanilla Combo 3x3" href="https://www.shopier.com/metefragrance/42442428" target="_blank" rel="noopener">
+        <span class="badge">Yeni</span>
+        <span class="badge">Combo</span>
+        <img class="thumb" src="https://cdn.shopier.app/pictures_large/metefragrance_5a5ed32596c21398d90d5435f6152957.jpeg" alt="Vanilla Combo" loading="lazy">
+        <div class="info"><div class="title">Vanilla Combo 3x3 (Kargo Dahil)</div><div class="price">600 TL</div></div>
+      </a>
+
+      <!-- 1 -->
+      <a class="card" data-name="Hugo Boss The Scent Elixir" href="https://www.shopier.com/metefragrance/41627403" target="_blank" rel="noopener">
+        <img class="thumb" src="https://cdn.shopier.app/pictures_mid/metefragrance_ec1d9fa4925e778c2f73397930d709a7.jpeg" alt="Hugo Boss The Scent Elixir" loading="lazy">
+        <div class="info"><div class="title">Hugo Boss The Scent Elixir</div><div class="price">210 TL</div></div>
+      </a>
+
+      <!-- 2 -->
+      <a class="card" data-name="Goldfield &amp; Banks Ingenious Ginger" href="https://www.shopier.com/metefragrance/41429238" target="_blank" rel="noopener">
+        <img class="thumb" src="https://cdn.shopier.app/pictures_mid/metefragrance_a280ca6299bf30234ca5039c63cff52e.jpeg" alt="Goldfield&amp;Banks Ingenious Ginger" loading="lazy">
+        <div class="info"><div class="title">Goldfield&amp;Banks Ingenious Ginger</div><div class="price">270 TL</div></div>
+      </a>
+
+      <!-- 3 -->
+      <a class="card" data-name="Jean Paul Gaultier Le Male Elixir" href="https://www.shopier.com/metefragrance/42135851" target="_blank" rel="noopener">
+        <img class="thumb" src="https://cdn.shopier.app/pictures_mid/metefragrance_1071591dd216f3e23467a0cad6a1893a.jpeg" alt="Jean Paul Gaultier Le Male Elixir" loading="lazy">
+        <div class="info"><div class="title">Jean Paul Gaultier Le Male Elixir</div><div class="price">220 TL</div></div>
+      </a>
+
+      <!-- 4 (Yeni) -->
+      <a class="card" data-name="Liquid Brun - Althair Klonu Yeni" href="https://www.shopier.com/metefragrance/42186212" target="_blank" rel="noopener">
+        <span class="badge">Yeni</span>
+        <img class="thumb" src="https://cdn.shopier.app/pictures_mid/metefragrance_9d4313f2b333d98981401097ff13f156.jpeg" alt="Liquid Brun - Althair Klonu" loading="lazy">
+        <div class="info"><div class="title">Liquid Brun - Althair Klonu</div><div class="price">160 TL</div></div>
+      </a>
+
+      <!-- 5 -->
+      <a class="card" data-name="Vulcan Feu - God Of Fire Klonu" href="https://www.shopier.com/metefragrance/41859394" target="_blank" rel="noopener">
+        <img class="thumb" src="https://cdn.shopier.app/pictures_mid/metefragrance_5441e831f967a703dc7f51bc931fbfce.jpeg" alt="Vulcan Feu - God Of Fire Klonu" loading="lazy">
+        <div class="info"><div class="title">Vulcan Feu - God Of Fire Klonu</div><div class="price">160 TL</div></div>
+      </a>
+
+      <!-- 6 (Yeni) -->
+      <a class="card" data-name="Lattafa Eclaire - Bianco Latte Klonu Yeni" href="https://www.shopier.com/metefragrance/42264512" target="_blank" rel="noopener">
+        <span class="badge">Yeni</span>
+        <img class="thumb" src="https://cdn.shopier.app/pictures_mid/metefragrance_0c0650c699f37dde410d88d9aecada2b.jpeg" alt="Lattafa Eclaire - Bianco Latte Klonu" loading="lazy">
+        <div class="info"><div class="title">Lattafa Eclaire - Bianco Latte Klonu</div><div class="price">160 TL</div></div>
+      </a>
+
+      <!-- 7 -->
+      <a class="card" data-name="Art Of Universe - Blue Talisman Klonu" href="https://www.shopier.com/metefragrance/42061392" target="_blank" rel="noopener">
+        <img class="thumb" src="https://cdn.shopier.app/pictures_mid/metefragrance_c39cf3d7f28d620d52cd9948252f83f6.jpeg" alt="Art Of Universe - Blue Talisman Klonu" loading="lazy">
+        <div class="info"><div class="title">Art Of Universe - Blue Talisman Klonu</div><div class="price">140 TL</div></div>
+      </a>
+
+      <!-- 8 -->
+      <a class="card" data-name="Parfums De Marly Althair" href="https://www.shopier.com/metefragrance/37801464" target="_blank" rel="noopener">
+        <img class="thumb" src="https://cdn.shopier.app/pictures_mid/metefragrance_f7b0ba4fa1ff0aef03a28c8143076aae.jpeg" alt="Parfums De Marly Althair" loading="lazy">
+        <div class="info"><div class="title">Parfums De Marly Althair</div><div class="price">390 TL</div></div>
+      </a>
+
+      <!-- 9 -->
+      <a class="card" data-name="Valentino BIR Extradose" href="https://www.shopier.com/metefragrance/41354081" target="_blank" rel="noopener">
+        <img class="thumb" src="https://cdn.shopier.app/pictures_mid/metefragrance_b638b32752604255baaf257ffee1bade.jpeg" alt="Valentino BIR Extradose" loading="lazy">
+        <div class="info"><div class="title">Valentino BIR Extradose</div><div class="price">230 TL</div></div>
+      </a>
+
+      <!-- 10 -->
+      <a class="card" data-name="Kenzo Homme Marine" href="https://www.shopier.com/metefragrance/37801731" target="_blank" rel="noopener">
+        <img class="thumb" src="https://cdn.shopier.app/pictures_mid/metefragrance_75c20c348a60d695c0e9ca23d5c97b2a.jpeg" alt="Kenzo Homme Marine" loading="lazy">
+        <div class="info"><div class="title">Kenzo Homme Marine</div><div class="price">180 TL</div></div>
+      </a>
+
+      <!-- 11 -->
+      <a class="card" data-name="Sospiro Vibrato" href="https://www.shopier.com/metefragrance/37802047" target="_blank" rel="noopener">
+        <img class="thumb" src="https://cdn.shopier.app/pictures_mid/metefragrance_33589f67735cb25734e53cb0ddedbbe4.jpeg" alt="Sospiro Vibrato" loading="lazy">
+        <div class="info"><div class="title">Sospiro Vibrato</div><div class="price">480 TL</div></div>
+      </a>
+
+      <!-- 12 -->
+      <a class="card" data-name="Armani Stronger With You Intensely" href="https://www.shopier.com/metefragrance/37801790" target="_blank" rel="noopener">
+        <img class="thumb" src="https://cdn.shopier.app/pictures_mid/metefragrance_5a52ebd23fb5bbfee87ff4ec5eedad97.jpeg" alt="Armani Stronger With You Intensely" loading="lazy">
+        <div class="info"><div class="title">Armani Stronger With You Intensely</div><div class="price">180 TL</div></div>
+      </a>
+
+      <!-- 13 -->
+      <a class="card" data-name="Versace Dylan Blue" href="https://www.shopier.com/metefragrance/41660537" target="_blank" rel="noopener">
+        <img class="thumb" src="https://cdn.shopier.app/pictures_mid/metefragrance_cf5ec549cf1d36847aa4cb1acf91b70d.jpeg" alt="Versace Dylan Blue" loading="lazy">
+        <div class="info"><div class="title">Versace Dylan Blue</div><div class="price">190 TL</div></div>
+      </a>
+
+      <!-- 14 -->
+      <a class="card" data-name="Hugo Boss Edt" href="https://www.shopier.com/metefragrance/38751683" target="_blank" rel="noopener">
+        <img class="thumb" src="https://cdn.shopier.app/pictures_mid/metefragrance_bdb551db6f27dc96268faef94902bd87.jpeg" alt="Hugo Boss Edt" loading="lazy">
+        <div class="info"><div class="title">Hugo Boss Edt</div><div class="price">70 TL</div></div>
+      </a>
+
+      <!-- 15 -->
+      <a class="card" data-name="Ysl Myself" href="https://www.shopier.com/metefragrance/37801361" target="_blank" rel="noopener">
+        <img class="thumb" src="https://cdn.shopier.app/pictures_mid/metefragrance_95c48266350862d72524b26bd117e256.jpeg" alt="Ysl Myself" loading="lazy">
+        <div class="info"><div class="title">Ysl Myself</div><div class="price">250 TL</div></div>
+      </a>
+
+      <!-- 16 -->
+      <a class="card" data-name="Burberry Hero Edp" href="https://www.shopier.com/metefragrance/41710125" target="_blank" rel="noopener">
+        <img class="thumb" src="https://cdn.shopier.app/pictures_mid/metefragrance_4730e1215528bb16cb8de07c4f83a01b.jpeg" alt="Burberry Hero Edp" loading="lazy">
+        <div class="info"><div class="title">Burberry Hero Edp</div><div class="price">210 TL</div></div>
+      </a>
+
+      <!-- 17 -->
+      <a class="card" data-name="Bad Boy Cobalt Edp" href="https://www.shopier.com/metefragrance/37801687" target="_blank" rel="noopener">
+        <img class="thumb" src="https://cdn.shopier.app/pictures_mid/metefragrance_2c2fae9499e5461bf42a0f1defbb3f15.jpeg" alt="Bad Boy Cobalt Edp" loading="lazy">
+        <div class="info"><div class="title">Bad Boy Cobalt Edp</div><div class="price">190 TL</div></div>
+      </a>
+
+      <!-- 18 -->
+      <a class="card" data-name="Versace Eros Flame" href="https://www.shopier.com/metefragrance/37801927" target="_blank" rel="noopener">
+        <img class="thumb" src="https://cdn.shopier.app/pictures_mid/metefragrance_b22a81d4372bfe91f78fbb56b76946fb.jpeg" alt="Versace Eros Flame" loading="lazy">
+        <div class="info"><div class="title">Versace Eros Flame</div><div class="price">200 TL</div></div>
+      </a>
+
+      <!-- 19 -->
+      <a class="card" data-name="Ysl Y Edp" href="https://www.shopier.com/metefragrance/37801226" target="_blank" rel="noopener">
+        <img class="thumb" src="https://cdn.shopier.app/pictures_mid/metefragrance_eb04e127a128a144460f5b978d6dfc5d.jpeg" alt="Ysl Y Edp" loading="lazy">
+        <div class="info"><div class="title">Ysl Y Edp</div><div class="price">240 TL</div></div>
+      </a>
+    </div>
+
+    <div class="empty" id="emptyState" style="display: none;">
+      Aramana uygun ürün bulunamadı. Yazımı kontrol et veya daha genel bir kelime dene (örn: “EDP”, “Klonu”, “Elixir”).
+    </div>
+
+    <div style="margin-top:24px">
+      <a class="btn" href="https://www.shopier.com/metefragrance" target="_blank" rel="noopener">
+        Tüm Ürünleri Shopier’de Gör
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div>© 2025 Mete Fragrance</div>
+    <div>
+      Instagram:
+      <a href="https://www.instagram.com/mete.fragrance/" target="_blank" rel="noopener">@mete.fragrance</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    const input = document.getElementById("searchInput");
+    const grid = document.getElementById("productGrid");
+    const cards = Array.from(grid.querySelectorAll(".card"));
+    const countInfo = document.getElementById("countInfo");
+    const emptyState = document.getElementById("emptyState");
+
+    function normalize(str){
+      return (str || "")
+        .toLowerCase()
+        .replace(/ı/g, "i")
+        .replace(/İ/g, "i")
+        .replace(/ş/g, "s")
+        .replace(/Ş/g, "s")
+        .replace(/ğ/g, "g")
+        .replace(/Ğ/g, "g")
+        .replace(/ü/g, "u")
+        .replace(/Ü/g, "u")
+        .replace(/ö/g, "o")
+        .replace(/Ö/g, "o")
+        .replace(/ç/g, "c")
+        .replace(/Ç/g, "c");
+    }
+
+    function update(){
+      const q = normalize(input.value).trim();
+      let visible = 0;
+
+      cards.forEach(card => {
+        const hay = normalize(card.getAttribute("data-name") || card.innerText);
+        const match = q === "" || hay.includes(q);
+        card.style.display = match ? "" : "none";
+        if (match) visible++;
+      });
+
+      countInfo.textContent = visible + " ürün";
+      emptyState.style.display = (visible === 0) ? "block" : "none";
+    }
+
+    input.addEventListener("input", update);
+    update();
+  })();
+</script>
+
+
+
+<audio class="audio-output" style="display: none;"></audio><div id="volume-booster-visusalizer">
+                    <div class="sound">
+                        <div class="sound-icon"></div>
+                        <div class="sound-wave sound-wave_one"></div>
+                        <div class="sound-wave sound-wave_two"></div>
+                        <div class="sound-wave sound-wave_three"></div>
+                    </div>
+                    <div class="segments-box">
+                        <div data-range="1-20" class="segment"><span></span></div>
+                        <div data-range="21-40" class="segment"><span></span></div>
+                        <div data-range="41-60" class="segment"><span></span></div>
+                        <div data-range="61-80" class="segment"><span></span></div>
+                        <div data-range="81-100" class="segment"><span></span></div>
+                    </div>
+                </div><div id="booster_root"></div><div id="c4g-content-root" class="c4g-widget" data-darkreader-mode="dynamic" data-darkreader-scheme="dark"><meta name="darkreader" content="5b2bf76cb60d449ea3461604dc345383"></div></body><div></div></html>
