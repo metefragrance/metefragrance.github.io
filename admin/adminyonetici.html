@@ -1,1 +1,122 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Mete Fragrance | Admin</title>
+
+<style>
+body{
+  margin:0;
+  background:#0e0e0e;
+  color:#fff;
+  font-family:Arial, Helvetica, sans-serif;
+  padding:30px;
+}
+
+h2{margin-top:0}
+
+.card{
+  border:1px solid #222;
+  padding:15px;
+  margin-top:20px;
+  background:#111;
+}
+
+input,button,textarea{
+  width:100%;
+  padding:10px;
+  margin-top:10px;
+  background:#000;
+  border:1px solid #333;
+  color:#fff;
+}
+
+button{cursor:pointer}
+button:hover{background:#222}
+
+.row{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+
+pre{
+  background:#000;
+  padding:15px;
+  white-space:pre-wrap;
+  overflow:auto;
+}
+</style>
+</head>
+
+<body>
+
+<h2>📊 Mete Fragrance – Admin Panel</h2>
+
+<div class="card">
+  <h3>Dashboard (index.html)</h3>
+  <div>Toplam Ürün: <strong id="total">0</strong></div>
+  <div>Combo Ürün: <strong id="combo">0</strong></div>
+  <div>Yeni Etiketli: <strong id="newTag">0</strong></div>
+</div>
+
+<div class="card">
+  <h3>➕ Ürün Ekle (HTML üretir)</h3>
+
+  <div class="row">
+    <input id="name" placeholder="Ürün adı">
+    <input id="price" placeholder="Fiyat (TL)">
+    <input id="img" placeholder="Resim URL">
+    <input id="link" placeholder="Shopier Link">
+  </div>
+
+  <button onclick="generate()">HTML ÜRET</button>
+
+  <h4>Kopyala → index.html içine yapıştır</h4>
+  <pre id="output"></pre>
+</div>
+
+<script>
+// INDEX.HTML OKU
+fetch("/index.html")
+  .then(r => r.text())
+  .then(html => {
+    const doc = new DOMParser().parseFromString(html, "text/html");
+    const cards = [...doc.querySelectorAll(".card")];
+
+    document.getElementById("total").innerText = cards.length;
+    document.getElementById("combo").innerText =
+      cards.filter(c => c.innerHTML.includes("Combo")).length;
+    document.getElementById("newTag").innerText =
+      cards.filter(c => c.innerHTML.includes("Yeni")).length;
+  });
+
+// HTML ÜRET
+function generate(){
+  const name = document.getElementById("name").value.trim();
+  const price = document.getElementById("price").value.trim();
+  const img = document.getElementById("img").value.trim();
+  const link = document.getElementById("link").value.trim();
+
+  if(!name || !price || !img || !link){
+    alert("Tüm alanları doldur");
+    return;
+  }
+
+  const html = `
+<a class="card" data-name="${name}" href="${link}" target="_blank" rel="noopener">
+  <img class="thumb" src="${img}" alt="${name}" loading="lazy">
+  <div class="info">
+    <div class="title">${name}</div>
+    <div class="price">${price} TL</div>
+  </div>
+</a>
+`.trim();
+
+  document.getElementById("output").textContent = html;
+}
+</script>
+
+</body>
+</html>
 
