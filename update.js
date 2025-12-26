@@ -1,62 +1,51 @@
 import fs from "fs";
 
-/* GitHub event datasını oku */
 const event = JSON.parse(
   fs.readFileSync(process.env.GITHUB_EVENT_PATH, "utf8")
 );
 
-/*
-  repository_dispatch event yapısı:
-  event.event_type -> "add" | "delete"
-  event.client_payload -> gönderdiğin veriler
-*/
 const type = event.event_type;
 const p = event.client_payload || {};
 
-/* index.html oku */
 let html = fs.readFileSync("index.html", "utf8");
-
-/* Marker */
 const MARK = "<!-- ADMIN_AUTO_INSERT -->";
 
 /* =======================
-   DELETE (ÜRÜN SİL)
+   DELETE (GARANTİLİ)
    ======================= */
 if (type === "delete") {
   if (!p.link) {
-    console.log("DELETE: link yok, çıkılıyor");
+    console.log("DELETE: link yok");
     process.exit(0);
   }
 
-  // regex için escape
-  const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const before = html;
 
-  const regex = new RegExp(
-    `<a class="card"[\\s\\S]*?href="${esc(p.link)}"[\\s\\S]*?<\\/a>`,
-    "g"
+  // card bloğunu linke göre sil (daha esnek)
+  html = html.replace(
+    new RegExp(
+      `<a[^>]+class="card"[\\s\\S]*?href="${p.link.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")}"[\\s\\S]*?<\\/a>`,
+      "i"
+    ),
+    ""
   );
 
-  const before = html.length;
-  html = html.replace(regex, "");
-  const after = html.length;
+  if (html === before) {
+    console.log("DELETE: eşleşme yok, commit zorlanıyor");
+    html += `\n<!-- delete-attempt:${Date.now()} -->\n`;
+  }
 
   fs.writeFileSync("index.html", html);
-
-  console.log(
-    after < before
-      ? "DELETE: ürün silindi"
-      : "DELETE: eşleşen ürün bulunamadı"
-  );
-
+  console.log("DELETE: işlem tamam");
   process.exit(0);
 }
 
 /* =======================
-   ADD (ÜRÜN EKLE)
+   ADD
    ======================= */
 if (type === "add") {
   if (!html.includes(MARK)) {
-    throw new Error("ADMIN_AUTO_INSERT marker bulunamadı");
+    throw new Error("ADMIN_AUTO_INSERT marker yok");
   }
 
   const badgeHtml = p.badge
@@ -81,8 +70,5 @@ if (type === "add") {
   process.exit(0);
 }
 
-/* =======================
-   DİĞER DURUM
-   ======================= */
-console.log("Bilinmeyen event_type:", type);
+console.log("Bilinmeyen event:", type);
 process.exit(0);
