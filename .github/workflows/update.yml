@@ -1,50 +1,33 @@
-name: Update Products
+name: Update
 
 on:
   repository_dispatch:
-    types: [add, delete]
+    types: [add]
 
 permissions:
   contents: write
 
 jobs:
-  update:
+  run:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
+      - uses: actions/checkout@v4
+      - run: node update.js
+      - run: |
+          git config user.name bot
+          git config user.email bot@site
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: main
-          persist-credentials: true
 
-      - name: Show status before
-        run: |
-          echo "=== BEFORE ==="
-          git status
-          ls -la
-
-      - name: Run update script
+      - name: Update index
         run: node update.js
 
-      - name: Show status after
-        run: |
-          echo "=== AFTER ==="
-          git status
-          echo "---- tail index.html ----"
-          tail -n 20 index.html
-
-      - name: Commit and push
+      - name: Commit & Push
         run: |
           git config user.name "mete-bot"
           git config user.email "mete-bot@users.noreply.github.com"
-
-          # 🔴 KRİTİK SATIR
-          git add -A
-
+          git add index.html
+          git commit -m "ürün eklendi"
           git status
-
-          # değişiklik yoksa hata vermesin
-          git commit -m "ürün güncellendi $(date +%s)" || true
-
-          git push origin main
+          git commit -m "ürün eklendi" || echo "No changes to commit"
+          git push
