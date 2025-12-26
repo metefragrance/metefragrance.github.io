@@ -7,11 +7,13 @@ const event = JSON.parse(
 const type = event.event_type;
 const p = event.client_payload || {};
 
-let html = fs.readFileSync("index.html", "utf8");
+const FILE = "index.html";
+let html = fs.readFileSync(FILE, "utf8");
+
 const MARK = "<!-- ADMIN_AUTO_INSERT -->";
 
 /* =======================
-   DELETE (GARANTİLİ)
+   DELETE – GARANTİLİ
    ======================= */
 if (type === "delete") {
   if (!p.link) {
@@ -21,22 +23,26 @@ if (type === "delete") {
 
   const before = html;
 
-  // card bloğunu linke göre sil (daha esnek)
+  const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
   html = html.replace(
     new RegExp(
-      `<a[^>]+class="card"[\\s\\S]*?href="${p.link.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")}"[\\s\\S]*?<\\/a>`,
-      "i"
+      `<a[^>]*class="card"[\\s\\S]*?href="${esc(p.link)}"[\\s\\S]*?<\\/a>`,
+      "gi"
     ),
     ""
   );
 
+  // ⚠️ Eğer regex bir şey silemediyse bile
+  // dosyayı MUTLAKA değiştiriyoruz
   if (html === before) {
-    console.log("DELETE: eşleşme yok, commit zorlanıyor");
-    html += `\n<!-- delete-attempt:${Date.now()} -->\n`;
+    html += `\n<!-- FORCE_DELETE ${Date.now()} -->\n`;
+    console.log("DELETE: eşleşme yoktu, zorunlu değişiklik eklendi");
+  } else {
+    console.log("DELETE: ürün silindi");
   }
 
-  fs.writeFileSync("index.html", html);
-  console.log("DELETE: işlem tamam");
+  fs.writeFileSync(FILE, html);
   process.exit(0);
 }
 
@@ -45,7 +51,7 @@ if (type === "delete") {
    ======================= */
 if (type === "add") {
   if (!html.includes(MARK)) {
-    throw new Error("ADMIN_AUTO_INSERT marker yok");
+    throw new Error("ADMIN_AUTO_INSERT marker bulunamadı");
   }
 
   const badgeHtml = p.badge
@@ -64,11 +70,11 @@ if (type === "add") {
 `;
 
   html = html.replace(MARK, card + "\n" + MARK);
-  fs.writeFileSync("index.html", html);
+  fs.writeFileSync(FILE, html);
 
   console.log("ADD: ürün eklendi");
   process.exit(0);
 }
 
-console.log("Bilinmeyen event:", type);
+console.log("Bilinmeyen event_type:", type);
 process.exit(0);
