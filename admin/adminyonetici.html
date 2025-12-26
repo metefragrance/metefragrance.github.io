@@ -2,22 +2,38 @@
 <html lang="tr">
 <head>
 <meta charset="utf-8">
-<title>Mete Fragrance – Admin</title>
+<title>Mete Fragrance – Admin Panel</title>
 
 <style>
-body{background:#0e0e0e;color:#fff;font-family:Arial;padding:24px}
+body{
+  background:#0e0e0e;
+  color:#fff;
+  font-family:Arial, sans-serif;
+  padding:24px;
+}
 input,button,select,label{
   width:100%;
   padding:10px;
   margin:8px 0;
   background:#000;
   color:#fff;
-  border:1px solid #333
+  border:1px solid #333;
 }
 button{cursor:pointer}
-pre{background:#000;padding:12px;white-space:pre-wrap}
-.box{border:1px solid #222;padding:14px;margin-bottom:20px}
-.count{font-size:20px;font-weight:bold}
+pre{
+  background:#000;
+  padding:12px;
+  white-space:pre-wrap;
+}
+.box{
+  border:1px solid #222;
+  padding:16px;
+  margin-bottom:22px;
+}
+.count{
+  font-size:22px;
+  font-weight:bold;
+}
 </style>
 </head>
 
@@ -30,23 +46,25 @@ pre{background:#000;padding:12px;white-space:pre-wrap}
   <div>Shopier Linkli: <span class="count" id="shopier">–</span></div>
 </div>
 
-<!-- EKLE -->
+<!-- ÜRÜN EKLE -->
 <div class="box">
   <h3>➕ Ürün Ekle</h3>
   <input id="t" placeholder="GitHub Token (classic)">
-  <input id="n" placeholder="Ad">
+  <input id="n" placeholder="Ürün Adı">
   <input id="p" placeholder="Fiyat">
   <input id="i" placeholder="Resim URL">
   <input id="l" placeholder="Shopier Link">
-  <label><input type="checkbox" id="badge"> Ürün Rozeti (Yeni)</label>
-  <button id="add">ÜRÜN EKLE</button>
+  <label>
+    <input type="checkbox" id="badge"> Ürün Rozeti (Yeni)
+  </label>
+  <button id="addBtn">ÜRÜN EKLE</button>
 </div>
 
-<!-- SİL -->
+<!-- ÜRÜN SİL -->
 <div class="box">
   <h3>🗑️ Ürün Sil</h3>
   <select id="productSelect">
-    <option value="">Ürün yükleniyor…</option>
+    <option>Ürünler yükleniyor…</option>
   </select>
   <button id="delBtn">SEÇİLEN ÜRÜNÜ SİL</button>
 </div>
@@ -54,59 +72,76 @@ pre{background:#000;padding:12px;white-space:pre-wrap}
 <pre id="log">Hazır</pre>
 
 <script>
-const OWNER="metefragrance";
-const REPO="metefragrance.github.io";
+const OWNER = "metefragrance";
+const REPO  = "metefragrance.github.io";
 
-/* ÜRÜNLERİ YÜKLE */
+/* ===== ÜRÜNLERİ INDEX.HTML'DEN ÇEK ===== */
 async function loadProducts(){
-  const html = await fetch("/index.html").then(r=>r.text());
+  const res = await fetch("/index.html?ts=" + Date.now());
+  const html = await res.text();
+
   const doc = new DOMParser().parseFromString(html,"text/html");
   const cards = [...doc.querySelectorAll(".card")];
 
+  // Dashboard
   total.textContent = cards.length;
-  shopier.textContent = cards.filter(c=>c.href.includes("shopier.com")).length;
+  shopier.textContent =
+    cards.filter(c => c.href && c.href.includes("shopier.com")).length;
 
+  // Select doldur
   productSelect.innerHTML = "";
-  cards.forEach(c=>{
+  cards.forEach(card=>{
+    const name =
+      card.querySelector(".title")?.innerText.trim() ||
+      card.getAttribute("data-name") ||
+      card.href;
+
     const opt = document.createElement("option");
-    opt.value = c.href;
-    opt.textContent = c.querySelector(".title")?.innerText || c.href;
+    opt.value = card.href;   // silme anahtarı
+    opt.textContent = name;
     productSelect.appendChild(opt);
   });
 
   if(!cards.length){
-    productSelect.innerHTML = `<option>Ürün yok</option>`;
+    productSelect.innerHTML = "<option>Ürün yok</option>";
   }
 }
+
+/* ===== SAYFA AÇILINCA ===== */
 loadProducts();
 
-/* EKLE */
-add.onclick = async () => {
+/* ===== ÜRÜN EKLE ===== */
+addBtn.onclick = async () => {
   const res = await fetch(
     `https://api.github.com/repos/${OWNER}/${REPO}/dispatches`,
     {
-      method:"POST",
+      method: "POST",
       headers:{
         "Accept":"application/vnd.github+json",
         "Content-Type":"application/json",
         "Authorization":"Bearer " + t.value.trim()
       },
       body: JSON.stringify({
-        event_type:"add",
+        event_type: "add",
         client_payload:{
-          name:n.value,
-          price:p.value,
-          img:i.value,
-          link:l.value,
+          name: n.value,
+          price: p.value,
+          img: i.value,
+          link: l.value,
           badge: badge.checked ? "Yeni" : ""
         }
       })
     }
   );
-  log.textContent = "ADD STATUS: "+res.status;
+
+  log.textContent =
+    "ADD STATUS: " + res.status + "\n" +
+    ((await res.text()) || "(204 ise normal)");
+
+  setTimeout(loadProducts, 2000);
 };
 
-/* SİL */
+/* ===== ÜRÜN SİL ===== */
 delBtn.onclick = async () => {
   if(!productSelect.value){
     alert("Ürün seç");
@@ -116,21 +151,24 @@ delBtn.onclick = async () => {
   const res = await fetch(
     `https://api.github.com/repos/${OWNER}/${REPO}/dispatches`,
     {
-      method:"POST",
+      method: "POST",
       headers:{
         "Accept":"application/vnd.github+json",
         "Content-Type":"application/json",
         "Authorization":"Bearer " + t.value.trim()
       },
       body: JSON.stringify({
-        event_type:"delete",
+        event_type: "delete",
         client_payload:{ link: productSelect.value }
       })
     }
   );
 
-  log.textContent = "DELETE STATUS: "+res.status;
-  setTimeout(loadProducts, 1500);
+  log.textContent =
+    "DELETE STATUS: " + res.status + "\n" +
+    ((await res.text()) || "(204 ise normal)");
+
+  setTimeout(loadProducts, 2000);
 };
 </script>
 
