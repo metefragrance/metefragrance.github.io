@@ -1,43 +1,26 @@
 import fs from "fs";
 
-const event = JSON.parse(
-  fs.readFileSync(process.env.GITHUB_EVENT_PATH, "utf8")
-);
+const payload = JSON.parse(fs.readFileSync(process.env.GITHUB_EVENT_PATH,"utf8"));
+const p = payload.client_payload;
 
-const type = event.event_type;
-const p = event.client_payload || {};
-
-if (type !== "add") {
-  console.log("ADD dışı event, çıkılıyor:", type);
-  process.exit(0);
-}
-
-const FILE = "index.html";
-let html = fs.readFileSync(FILE, "utf8");
-
-const MARK = "<!-- ADMIN_AUTO_INSERT -->";
-
-if (!html.includes(MARK)) {
-  throw new Error("ADMIN_AUTO_INSERT marker bulunamadı");
-}
-
-const badgeHtml = p.badge
-  ? `<span class="badge">${p.badge}</span>`
-  : "";
+const p = JSON.parse(fs.readFileSync(process.env.GITHUB_EVENT_PATH,"utf8")).client_payload;
+let html = fs.readFileSync("index.html","utf8");
+const marker = "<!-- ADMIN_AUTO_INSERT -->";
+const m = "<!-- ADMIN_AUTO_INSERT -->";
 
 const card = `
 <a class="card" data-name="${p.name}" href="${p.link}" target="_blank" rel="noopener">
-  ${badgeHtml}
   <img class="thumb" src="${p.img}" alt="${p.name}" loading="lazy">
   <div class="info">
     <div class="title">${p.name}</div>
     <div class="price">${p.price} TL</div>
   </div>
+  <div class="info"><div class="title">${p.name}</div><div class="price">${p.price} TL</div></div>
 </a>
 `;
 
-html = html.replace(MARK, card + "\n" + MARK);
-fs.writeFileSync(FILE, html);
-
-console.log("ADD: ürün başarıyla eklendi");
-process.exit(0);
+if(!html.includes(marker)) throw new Error("Marker yok");
+html = html.replace(marker, card + "\n" + marker);
+fs.writeFileSync("index.html", html);
+if (!html.includes(m)) throw new Error("ADMIN_AUTO_INSERT marker yok");
+fs.writeFileSync("index.html", html.replace(m, card + "\n" + m));
