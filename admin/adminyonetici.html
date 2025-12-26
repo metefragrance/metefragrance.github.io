@@ -1,143 +1,34 @@
-<html lang="tr"><head><style class="darkreader darkreader--text" media="screen"></style><style class="darkreader darkreader--invert" media="screen"></style><style class="darkreader darkreader--inline" media="screen">[data-darkreader-inline-bgcolor] {
-  background-color: var(--darkreader-inline-bgcolor) !important;
-}
-[data-darkreader-inline-bgimage] {
-  background-image: var(--darkreader-inline-bgimage) !important;
-}
-[data-darkreader-inline-border] {
-  border-color: var(--darkreader-inline-border) !important;
-}
-[data-darkreader-inline-border-bottom] {
-  border-bottom-color: var(--darkreader-inline-border-bottom) !important;
-}
-[data-darkreader-inline-border-left] {
-  border-left-color: var(--darkreader-inline-border-left) !important;
-}
-[data-darkreader-inline-border-right] {
-  border-right-color: var(--darkreader-inline-border-right) !important;
-}
-[data-darkreader-inline-border-top] {
-  border-top-color: var(--darkreader-inline-border-top) !important;
-}
-[data-darkreader-inline-boxshadow] {
-  box-shadow: var(--darkreader-inline-boxshadow) !important;
-}
-[data-darkreader-inline-color] {
-  color: var(--darkreader-inline-color) !important;
-}
-[data-darkreader-inline-fill] {
-  fill: var(--darkreader-inline-fill) !important;
-}
-[data-darkreader-inline-stroke] {
-  stroke: var(--darkreader-inline-stroke) !important;
-}
-[data-darkreader-inline-outline] {
-  outline-color: var(--darkreader-inline-outline) !important;
-}
-[data-darkreader-inline-stopcolor] {
-  stop-color: var(--darkreader-inline-stopcolor) !important;
-}</style><style class="darkreader darkreader--variables" media="screen">:root {
-   --darkreader-neutral-background: #202223;
-   --darkreader-neutral-text: #e3dfda;
-   --darkreader-selection-background: #0d59b5;
-   --darkreader-selection-text: #f2f0ed;
-}</style><style class="darkreader darkreader--root-vars" media="screen"></style><style data-merge-styles="true"></style><meta charset="utf-8">
-
-
-
-<meta charset="utf-8">
-<title>Mete Fragrance Admin</title>
+<html><head><meta charset="utf-8">
 <style>
 body{background:#0e0e0e;color:#fff;font-family:Arial;padding:24px}
 input,button{width:100%;padding:10px;margin:8px 0;background:#000;color:#fff;border:1px solid #333}
-button{cursor:pointer}
 pre{background:#000;padding:12px;white-space:pre-wrap}
-.box{border:1px solid #222;padding:12px;margin-bottom:16px}
-.count{font-size:20px;font-weight:bold}
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"><style class="darkreader darkreader--override" media="screen"></style></head>
 
-<!-- DASHBOARD -->
-<div class="box">
-  <h3>📊 Dashboard</h3>
-  <div>Toplam Ürün: <span class="count" id="total">–</span></div>
-  <div>Shopier Linkli Ürün: <span class="count" id="shopier">–</span></div>
-</div>
-
-<!-- FORM -->
-<div class="box">
-  <h3>➕ Ürün Ekle</h3>
-  <input id="t" placeholder="GitHub Token (classic)">
-  <input id="n" placeholder="Ad">
-  <input id="p" placeholder="Fiyat">
-  <input id="i" placeholder="Resim URL">
-  <input id="l" placeholder="Shopier Link">
-  <button id="b">GÖNDER</button>
-</div>
-
-<pre id="log">Hazır</pre>
+</head><body><input id="t" placeholder="GitHub Token (classic) buraya yapıştır">
+<input id="n" placeholder="Ad">
+<input id="p" placeholder="Fiyat">
+<input id="i" placeholder="Resim URL">
+<input id="l" placeholder="Shopier Link">
+<button id="b">GÖNDER</button>
+<pre id="log">STATUS: 204
+(204 ise normal)</pre>
 
 <script>
 const OWNER="metefragrance", REPO="metefragrance.github.io";
-const OWNER="metefragrance";
-const REPO="metefragrance.github.io";
-
-/* DASHBOARD VERİLERİ */
-fetch("/index.html")
-  .then(r=>r.text())
-  .then(html=>{
-    const doc = new DOMParser().parseFromString(html,"text/html");
-    const cards = [...doc.querySelectorAll(".card")];
-    document.getElementById("total").textContent = cards.length;
-    document.getElementById("shopier").textContent =
-      cards.filter(c => c.href && c.href.includes("shopier.com")).length;
-  });
-
-/* ÜRÜN EKLE */
 b.onclick = async () => {
   const url = `https://api.github.com/repos/${OWNER}/${REPO}/dispatches`;
-
   const res = await fetch(url,{
     method:"POST",
     headers:{
-@@ -26,9 +62,22 @@
+      "Accept":"application/vnd.github+json",
+      "Content-Type":"application/json",
       "Authorization":"Bearer " + t.value.trim(),
       "X-GitHub-Api-Version":"2022-11-28"
     },
     body: JSON.stringify({event_type:"add", client_payload:{name:n.value,price:p.value,img:i.value,link:l.value}})
-    body: JSON.stringify({
-      event_type:"add",
-      client_payload:{
-        name:n.value,
-        price:p.value,
-        img:i.value,
-        link:l.value   // 🔴 DİREKT SHOPIER LINK
-      }
-    })
   });
   log.textContent = "STATUS: " + res.status + "\n" + (await res.text() || "(204 ise normal)");
-
-  log.textContent =
-    "STATUS: " + res.status + "\n" +
-    ((await res.text()) || "(204 ise normal)");
 };
 </script>
-
-
-
-
-<audio class="audio-output" style="display: none;"></audio><div id="volume-booster-visusalizer">
-                    <div class="sound">
-                        <div class="sound-icon"></div>
-                        <div class="sound-wave sound-wave_one"></div>
-                        <div class="sound-wave sound-wave_two"></div>
-                        <div class="sound-wave sound-wave_three"></div>
-                    </div>
-                    <div class="segments-box">
-                        <div data-range="1-20" class="segment"><span></span></div>
-                        <div data-range="21-40" class="segment"><span></span></div>
-                        <div data-range="41-60" class="segment"><span></span></div>
-                        <div data-range="61-80" class="segment"><span></span></div>
-                        <div data-range="81-100" class="segment"><span></span></div>
-                    </div>
-                </div><div id="booster_root"></div><div id="c4g-content-root" class="c4g-widget" data-darkreader-mode="dynamic" data-darkreader-scheme="dark"><meta name="darkreader" content="38e94494c07b472c8ef5eaa558e516a4"></div></body><div></div></html>
+</body></html>
