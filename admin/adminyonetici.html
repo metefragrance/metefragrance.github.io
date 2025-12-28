@@ -1,34 +1,354 @@
-<html><head><meta charset="utf-8">
-<style>
-body{background:#0e0e0e;color:#fff;font-family:Arial;padding:24px}
-input,button{width:100%;padding:10px;margin:8px 0;background:#000;color:#fff;border:1px solid #333}
-pre{background:#000;padding:12px;white-space:pre-wrap}
-</style>
+<html lang="tr"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ürün Ekleme Paneli</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --input-bg: #2c2c2c;
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --text-main: #ffffff;
+            --text-sub: #a1a1aa;
+            --border: #3f3f46;
+        }
 
-</head><body><input id="t" placeholder="GitHub Token (classic) buraya yapıştır">
-<input id="n" placeholder="Ad">
-<input id="p" placeholder="Fiyat">
-<input id="i" placeholder="Resim URL">
-<input id="l" placeholder="Shopier Link">
-<button id="b">GÖNDER</button>
-<pre id="log">STATUS: 
-(204,200 ise normal, 401,403,404 ise hata vardır.)</pre>
+        * { box-sizing: border-box; margin: 0; padding: 0; outline: none; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border: 1px solid var(--border);
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group { margin-bottom: 16px; }
+
+        label {
+            display: block;
+            font-size: 13px;
+            color: var(--text-sub);
+            margin-bottom: 6px;
+            margin-left: 2px;
+        }
+
+        input {
+            width: 100%;
+            background: var(--input-bg);
+            border: 1px solid transparent;
+            color: var(--text-main);
+            padding: 12px 14px;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.2s ease;
+        }
+
+        input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Token Checkbox */
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+            font-size: 13px;
+            color: var(--text-sub);
+            cursor: pointer;
+        }
+        .checkbox-group input { width: auto; margin-right: 8px; }
+
+        button {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 8px;
+        }
+
+        button:active { transform: scale(0.98); }
+        button:hover { background: var(--primary-hover); }
+        button:disabled { opacity: 0.7; cursor: not-allowed; }
+
+        /* LOG ALANI (Eski Stil Terminal Görünümü) */
+        pre#log {
+            margin-top: 20px;
+            background: #000;
+            color: #00ff41; /* Hacker Yeşili */
+            padding: 12px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 12px;
+            white-space: pre-wrap; /* Mobilde taşmayı önler */
+            word-wrap: break-word;
+            border: 1px solid #333;
+            min-height: 60px;
+        }
+
+    </style>
+</head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ürün Ekleme Paneli</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --input-bg: #2c2c2c;
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --text-main: #ffffff;
+            --text-sub: #a1a1aa;
+            --border: #3f3f46;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; outline: none; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border: 1px solid var(--border);
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group { margin-bottom: 16px; }
+
+        label {
+            display: block;
+            font-size: 13px;
+            color: var(--text-sub);
+            margin-bottom: 6px;
+            margin-left: 2px;
+        }
+
+        input {
+            width: 100%;
+            background: var(--input-bg);
+            border: 1px solid transparent;
+            color: var(--text-main);
+            padding: 12px 14px;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.2s ease;
+        }
+
+        input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+            font-size: 13px;
+            color: var(--text-sub);
+            cursor: pointer;
+        }
+        .checkbox-group input { width: auto; margin-right: 8px; }
+
+        button {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 8px;
+        }
+
+        button:active { transform: scale(0.98); }
+        button:hover { background: var(--primary-hover); }
+        button:disabled { opacity: 0.7; cursor: not-allowed; }
+
+        /* LOG ALANI */
+        pre#log {
+            margin-top: 20px;
+            background: #000;
+            color: #00ff41;
+            padding: 12px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            border: 1px solid #333;
+            min-height: 60px;
+        }
+
+    </style>
+</head><body>
+
+<div class="container">
+    <h2>Ürün Ekle</h2>
+    
+    <div class="form-group">
+        <label>GitHub Token</label>
+        <input id="t" type="password" placeholder="ghp_...">
+    </div>
+
+    <label class="checkbox-group">
+        <input type="checkbox" id="saveTokenCheck"> Tokeni hatırla
+    </label>
+
+    <div class="form-group"><label>Ürün Adı</label><input id="n" type="text"></div>
+    <div class="form-group"><label>Fiyat</label><input id="p" type="text"></div>
+    <div class="form-group"><label>Resim URL</label><input id="i" type="url"></div>
+    <div class="form-group"><label>Shopier Link</label><input id="l" type="url"></div>
+
+    <button id="b">GÖNDER</button>
+
+    <pre id="log">STATUS: Bekleniyor...
+(204 ise normal, 401/404 ise hata)</pre>
+</div>
 
 <script>
-const OWNER="metefragrance", REPO="metefragrance.github.io";
-b.onclick = async () => {
-  const url = `https://api.github.com/repos/${OWNER}/${REPO}/dispatches`;
-  const res = await fetch(url,{
-    method:"POST",
-    headers:{
-      "Accept":"application/vnd.github+json",
-      "Content-Type":"application/json",
-      "Authorization":"Bearer " + t.value.trim(),
-      "X-GitHub-Api-Version":"2022-11-28"
-    },
-    body: JSON.stringify({event_type:"add", client_payload:{name:n.value,price:p.value,img:i.value,link:l.value}})
-  });
-  log.textContent = "STATUS: " + res.status + "\n" + (await res.text() || "(204 ise normal)");
-};
+    const OWNER = "metefragrance";
+    const REPO = "metefragrance.github.io";
+
+    const els = {
+        t: document.getElementById('t'),
+        n: document.getElementById('n'),
+        p: document.getElementById('p'),
+        i: document.getElementById('i'),
+        l: document.getElementById('l'),
+        b: document.getElementById('b'),
+        log: document.getElementById('log'),
+        save: document.getElementById('saveTokenCheck')
+    };
+
+    window.addEventListener('load', () => {
+        const saved = localStorage.getItem('gh_token');
+        if (saved) {
+            els.t.value = saved;
+            els.save.checked = true;
+        }
+    });
+
+    els.b.onclick = async () => {
+        const tokenVal = els.t.value.trim();
+
+        // 1. KONTROL: Token boş mu?
+        if (!tokenVal) {
+            alert("Lütfen tokeninizi girin.");
+            return; // İşlemi durdur
+        }
+
+        // UI Hazırlığı
+        els.b.disabled = true;
+        els.b.textContent = "Gönderiliyor...";
+        els.log.textContent = "STATUS: İşleniyor...";
+        els.log.style.color = "#fbbf24"; 
+
+        if (els.save.checked) localStorage.setItem('gh_token', tokenVal);
+        else localStorage.removeItem('gh_token');
+
+        try {
+            const url = `https://api.github.com/repos/${OWNER}/${REPO}/dispatches`;
+            const res = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Accept": "application/vnd.github+json",
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + tokenVal,
+                    "X-GitHub-Api-Version": "2022-11-28"
+                },
+                body: JSON.stringify({
+                    event_type: "add", 
+                    client_payload: {
+                        name: els.n.value,
+                        price: els.p.value,
+                        img: els.i.value,
+                        link: els.l.value
+                    }
+                })
+            });
+
+            // 2. KONTROL: Token hatalı mı? (401 veya 403 dönerse)
+            if (res.status === 401 || res.status === 403) {
+                alert("Tokeninizi kontrol edin ve tekrar deneyin.");
+                els.log.style.color = "#ef4444";
+            } else if (res.status >= 200 && res.status < 300) {
+                // Başarılı
+                els.log.style.color = "#00ff41"; 
+                els.n.value = ""; els.p.value = ""; els.i.value = ""; els.l.value = "";
+            } else {
+                // Diğer Hatalar (404 vs)
+                els.log.style.color = "#ef4444";
+            }
+
+            const text = await res.text();
+            els.log.textContent = "STATUS: " + res.status + "\n" + (text || "(204 - Başarılı)");
+
+        } catch (err) {
+            els.log.textContent = "HATA: " + err.message;
+            els.log.style.color = "#ef4444";
+            alert("Bağlantı hatası oluştu.");
+        } finally {
+            els.b.disabled = false;
+            els.b.textContent = "GÖNDER";
+        }
+    };
 </script>
+
+
 </body></html>
